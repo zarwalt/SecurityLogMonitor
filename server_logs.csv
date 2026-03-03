@@ -1,0 +1,10 @@
+Log_IP:192.168.1.25_X:12.50_Y:4.20_OK
+192.168.1.100 - - [02/Mar/2026:20:00:00 +0000] "GET /admin HTTP/1.1" 403
+Log_IP:10.0.0.5_X:14.10_Y:9.80_OK
+Failed password for root from 203.0.113.42 port 22 ssh2
+Log_IP:172.16.0.10_X:8.55_Y:2.15_OK
+Log_IP:192.168.1.50_X:100.00_Y:50.00_OK
+Log_IP:10.1.1.200_X:0.00_Y:0.00_ERROR
+[error] [client 192.168.1.80] File does not exist: /var/www/html/wp-login.php
+Log_IP:192.168.1.33_X:45.20_Y:12.10_OK
+Log_IP:8.8.8.8_X:99.99_Y:11.11_OK
