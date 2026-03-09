@@ -5,11 +5,11 @@ public class AnalizadorLogs {
 	private String logs;
 	
 	public AnalizadorLogs(String logs) {
-		// formato de log:   Log_IP:192.168.1.25_X:12.50_Y:4.20_OK
-		if (logs != null && logs.startsWith("Log_IP") && (logs.endsWith("_OK"))) {
+		// formato de log:   [LOGIN_OK] IP:192.168.1.33_PORT:8080_USER:dev_team
+		if (logs.startsWith("[LOGIN_OK]")) {
 			this.logs = logs;
 		} else {
-			var mensaje = "El texto no cumple con la estructura para lectura, Texto: %s".formatted(logs);
+			var mensaje = "registro sospecho: %s".formatted(logs);
 			throw new IllegalArgumentException(mensaje);
 		}
 	}
@@ -18,22 +18,20 @@ public class AnalizadorLogs {
 		return new AnalizadorLogs(logs);
 	}
 	
-	private String extraerIP() {
-		var IP = this.logs.substring(this.logs.indexOf("Log_IP:") + 7, this.logs.indexOf("_X"));
-		return IP;
+	private String getData(int start, int stop) {
+		var DATA = this.logs.substring(start, stop);
+		return DATA;
 	}
 	
-	private double extraerX() {
-		var X = this.logs.substring(this.logs.indexOf("_X") + 3, this.logs.indexOf("_Y"));
-		return Double.parseDouble(X);
+	private String getData(int start) {
+		var DATA = this.logs.substring(start);
+		return DATA;
 	}
 	
-	private double extraerY() {
-		var Y = this.logs.substring(this.logs.indexOf("_Y") + 3, this.logs.indexOf("_OK"));
-		return Double.parseDouble(Y);
-	}
+	public String getIP() { return getData((this.logs.indexOf("IP:") + 3), (this.logs.indexOf("_PORT:"))); }
 	
-	public String getIP() {return extraerIP(); }
-	public double getX() {return extraerX(); }
-	public double getY() {return extraerY(); }
+	public String getPort() { return getData((this.logs.indexOf("_PORT:") + 6), (this.logs.indexOf("_USER:"))); }
+	
+	public String getUser() { return getData(this.logs.indexOf("_USER:") + 6); }
+	
 }
