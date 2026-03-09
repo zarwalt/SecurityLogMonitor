@@ -14,7 +14,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		// formato de log:   [LOGIN_OK] IP:192.168.1.33_PORT:8080_USER:dev_team
+		// formato de log:   [LOGIN_OK] IP:192.168.1.33_PORT:8080_USER:dev_team (corregimos firma github, prueba)
 		
 		Path reader = Paths.get("server_logs2.csv");
 		Path writer_ok = Paths.get("data_log_OK");
